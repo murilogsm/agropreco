@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz a página se ajustar à largura do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agro Preço</title>
+
+  <!-- Arquivo com todo o visual da página -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== MENU DO TOPO ===== -->
+  <header>
+    <nav>
+      <a href="#apresentacao" class="logo">Agro Preço</a>
+      <ul>
+        <li><a href="#problema">O problema</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#experimente" class="botao-menu">Experimente</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== 1. APRESENTAÇÃO ===== -->
+  <section id="apresentacao">
+    <div class="container hero">
+      <!-- Lado esquerdo: texto -->
+      <div class="hero-texto">
+        <span class="etiqueta">Feito para o produtor rural</span>
+        <h1>Agro Preço</h1>
+        <p>O preço da saca num lugar só, sem precisar perguntar pra todo mundo</p>
+        <!-- O link leva até a seção da calculadora -->
+        <a href="#experimente" class="botao">Experimentar agora</a>
+      </div>
+
+      <!-- Lado direito: painel ilustrativo (valores de exemplo) -->
+      <div class="hero-painel">
+        <p class="painel-titulo">Preço da saca hoje <span>exemplo</span></p>
+        <ul>
+          <li><span>Soja</span> <strong>R$ 128,50</strong></li>
+          <li><span>Milho</span> <strong>R$ 62,00</strong></li>
+          <li><span>Feijão</span> <strong>R$ 210,00</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. O PROBLEMA ===== -->
+  <section id="problema">
+    <div class="container">
+      <span class="etiqueta">O problema</span>
+      <h2>Saber o preço não devia ser tão difícil</h2>
+      <p class="subtitulo">Você conhece bem essa história, né?</p>
+
+      <div class="cartoes">
+        <div class="cartao">
+          <h3>Preço espalhado</h3>
+          <p>Um vizinho fala um valor, o cerealista fala outro e o grupo do celular fala um terceiro.</p>
+        </div>
+        <div class="cartao">
+          <h3>Muita informação desencontrada</h3>
+          <p>São tantas mensagens que fica difícil saber qual preço vale hoje e qual já passou.</p>
+        </div>
+        <div class="cartao">
+          <h3>Decisão na incerteza</h3>
+          <p>Sem saber o preço certo, você vende sem ter certeza se fez um bom negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. COMO FUNCIONA ===== -->
+  <section id="como-funciona">
+    <div class="container">
+      <span class="etiqueta">Como funciona</span>
+      <h2>Simples, em três passos</h2>
+      <p class="subtitulo">Sem complicação, do jeito que tem que ser</p>
+
+      <!-- Reaproveita o mesmo layout dos cartões -->
+      <div class="cartoes">
+        <div class="cartao passo">
+          <span class="numero">1</span>
+          <h3>Consultar</h3>
+          <p>Veja o preço da saca na sua região, tudo num lugar só.</p>
+        </div>
+        <div class="cartao passo">
+          <span class="numero">2</span>
+          <h3>Comparar</h3>
+          <p>Compare os valores e veja quem está pagando melhor.</p>
+        </div>
+        <div class="cartao passo">
+          <span class="numero">3</span>
+          <h3>Decidir</h3>
+          <p>Com a informação na mão, você decide a hora certa de vender.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. EXPERIMENTE (CALCULADORA) ===== -->
+  <section id="experimente">
+    <div class="container">
+      <span class="etiqueta">Experimente</span>
+      <h2>Quanto vale a sua produção?</h2>
+      <p class="subtitulo">Coloque a quantidade e o preço e veja na hora</p>
+
+      <div class="caixa-form">
+        <label for="quantidade">Quantidade de sacas</label>
+        <input type="number" id="quantidade" placeholder="Ex.: 150" min="0">
+
+        <label for="preco">Preço por saca (R$)</label>
+        <input type="number" id="preco" placeholder="Ex.: 83,00" min="0" step="0.01">
+
+        <button class="botao" onclick="calcular()">Calcular</button>
+
+        <!-- Aqui o JavaScript escreve o resultado -->
+        <p id="resultado" class="mensagem"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. CONTATO ===== -->
+  <section id="contato">
+    <div class="container">
+      <span class="etiqueta">Contato</span>
+      <h2>Fique por dentro</h2>
+      <p class="subtitulo">Deixe seu e-mail e a gente te avisa das novidades</p>
+
+      <!-- onsubmit chama a função do JavaScript -->
+      <form class="caixa-form" onsubmit="enviarContato(event)">
+        <label for="email">Seu e-mail</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+
+        <button type="submit" class="botao">Quero acompanhar</button>
+
+        <p id="mensagem-contato" class="mensagem"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== 6. RODAPÉ ===== -->
+  <footer>
+    <div class="rodape">
+      <a href="#apresentacao" class="logo">Agro Preço</a>
+      <p>Agro Preço - 2026</p>
+    </div>
+  </footer>
+
+  <!-- Arquivo com as funções da calculadora e do contato -->
+  <script src="script.js"></script>
+
+</body>
+</html>

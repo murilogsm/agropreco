@@ -1,0 +1,415 @@
+/* ===== CORES DO SITE (variáveis para reaproveitar) ===== */
+:root {
+  --verde-escuro: #2f5d3a;
+  --verde: #4a8a4f;
+  --verde-claro: #e3efdf;
+  --bege: #f3ead8;
+  --bege-claro: #fbf8f1;
+  --texto: #2b2b2b;
+  --texto-suave: #5a5a5a;
+  --vermelho: #c0392b;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+/* ===== AJUSTES GERAIS ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding não aumenta o tamanho da caixa */
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave ao clicar no menu */
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bege-claro);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+/* Limita a largura do conteúdo e centraliza */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Espaço entre as seções */
+section {
+  padding: 80px 0;
+}
+
+/* Compensa a altura do menu fixo ao rolar até uma seção */
+section[id] {
+  scroll-margin-top: 60px;
+}
+
+/* Texto pequeno acima dos títulos */
+.etiqueta {
+  display: block;
+  text-align: center;
+  color: var(--verde);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+h2 {
+  color: var(--verde-escuro);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.subtitulo {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--texto-suave);
+}
+
+/* ===== MENU DO TOPO ===== */
+header {
+  background-color: var(--verde-escuro);
+  position: sticky; /* menu fica fixo no topo ao rolar */
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+nav ul a {
+  color: var(--bege);
+  text-decoration: none;
+}
+
+nav ul a:hover {
+  color: #fff;
+}
+
+/* Botão de destaque dentro do menu */
+nav ul a.botao-menu {
+  background-color: var(--bege);
+  color: var(--verde-escuro);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+nav ul a.botao-menu:hover {
+  background-color: #fff;
+}
+
+/* ===== BOTÕES ===== */
+.botao {
+  display: inline-block;
+  background-color: var(--verde);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s; /* troca de cor suave */
+}
+
+.botao:hover {
+  background-color: var(--verde-escuro);
+}
+
+/* ===== 1. APRESENTAÇÃO ===== */
+#apresentacao {
+  background: linear-gradient(180deg, var(--verde-claro), var(--bege-claro));
+  padding: 100px 0;
+}
+
+/* Texto de um lado e painel do outro */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.hero-texto {
+  flex: 1 1 400px;
+}
+
+.hero-texto .etiqueta {
+  text-align: left;
+}
+
+.hero-texto h1 {
+  font-size: 3.2rem;
+  color: var(--verde-escuro);
+  line-height: 1.1;
+}
+
+.hero-texto p {
+  font-size: 1.25rem;
+  color: var(--texto-suave);
+  margin: 16px 0 32px;
+}
+
+/* Painel que simula o app mostrando preços */
+.hero-painel {
+  flex: 1 1 280px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--sombra);
+}
+
+.painel-titulo {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: var(--verde-escuro);
+  margin-bottom: 12px;
+}
+
+.painel-titulo span {
+  font-size: 0.75rem;
+  font-weight: normal;
+  background-color: var(--bege);
+  color: var(--texto-suave);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.hero-painel ul {
+  list-style: none;
+}
+
+.hero-painel li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bege);
+}
+
+.hero-painel li:last-child {
+  border-bottom: none;
+}
+
+.hero-painel strong {
+  color: var(--verde);
+}
+
+/* ===== 2. O PROBLEMA (cartões com flexbox) ===== */
+.cartoes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* deixa os cartões descerem quando não cabem */
+}
+
+.cartao {
+  flex: 1 1 250px; /* cresce, encolhe e tem largura base de 250px */
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s; /* movimento suave no hover */
+}
+
+/* Cartão sobe um pouquinho quando passa o mouse */
+.cartao:hover {
+  transform: translateY(-4px);
+}
+
+.cartao h3 {
+  color: var(--verde-escuro);
+  margin-bottom: 8px;
+}
+
+.cartao p {
+  color: var(--texto-suave);
+}
+
+/* ===== 3. COMO FUNCIONA ===== */
+#como-funciona {
+  background-color: var(--bege);
+}
+
+.passo {
+  text-align: center;
+}
+
+/* Círculo com o número do passo */
+.numero {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  background-color: var(--verde);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* ===== 4. CALCULADORA ===== */
+.caixa-form {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 450px;
+  margin: 0 auto;
+  box-shadow: var(--sombra);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+input:focus {
+  outline: 2px solid var(--verde);
+  border-color: var(--verde);
+}
+
+.caixa-form .botao {
+  width: 100%;
+}
+
+/* Área onde aparece o resultado ou o erro */
+.mensagem {
+  margin-top: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.erro {
+  color: var(--vermelho);
+}
+
+.sucesso {
+  color: var(--verde-escuro);
+  font-size: 1.2rem;
+}
+
+/* Fundo verde claro no resultado para dar destaque */
+.mensagem.sucesso {
+  background-color: var(--verde-claro);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ===== 5. CONTATO ===== */
+#contato {
+  background-color: var(--verde-claro);
+}
+
+/* ===== 6. RODAPÉ ===== */
+footer {
+  background-color: var(--verde-escuro);
+  color: var(--bege);
+  padding: 32px 20px;
+}
+
+.rodape {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rodape .logo {
+  font-size: 1.1rem;
+}
+
+.rodape p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ===== CELULAR (telas até 600px) ===== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column; /* logo em cima, links embaixo */
+    gap: 8px;
+  }
+
+  nav ul {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  /* Esconde o botão do menu para não apertar no celular */
+  nav ul a.botao-menu {
+    display: none;
+  }
+
+  section[id] {
+    scroll-margin-top: 90px;
+  }
+
+  #apresentacao {
+    padding: 60px 0;
+  }
+
+  .hero-texto,
+  .hero-texto .etiqueta {
+    text-align: center;
+  }
+
+  .hero-texto h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-texto p {
+    font-size: 1.1rem;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .rodape {
+    flex-direction: column;
+    text-align: center;
+  }
+}
